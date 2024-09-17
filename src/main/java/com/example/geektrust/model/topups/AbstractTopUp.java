@@ -11,14 +11,6 @@ public abstract class AbstractTopUp {
         this.price = price;
     }
 
-    public int getDeviceCount() {
-        return deviceCount;
-    }
-
-    public int getMonths() {
-        return months;
-    }
-
     public int getPrice() {
         return price;
     }
