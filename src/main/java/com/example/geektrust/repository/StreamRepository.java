@@ -16,39 +16,9 @@ public class StreamRepository {
     private final List<AbstractStream> streams;
 
     public StreamRepository() {
-        MusicStream musicStream = new MusicStream(
-                Arrays.asList(
-                        new FreePlan(RepositoryConstants.FREE_PLAN_MONTHS,
-                                RepositoryConstants.MUSIC_FREE_PLAN_PRICE),
-                        new PersonalPlan(RepositoryConstants.PERSONAL_PLAN_MONTHS,
-                                RepositoryConstants.MUSIC_PERSONAL_PLAN_PRICE),
-                        new PremiumPlan(RepositoryConstants.PREMIUM_PLAN_MONTHS,
-                                RepositoryConstants.MUSIC_PREMIUM_PLAN_PRICE)
-                )
-        );
-
-        VideoStream videoStream = new VideoStream(
-                Arrays.asList(
-                        new FreePlan(RepositoryConstants.FREE_PLAN_MONTHS,
-                                RepositoryConstants.VIDEO_FREE_PLAN_PRICE),
-                        new PersonalPlan(RepositoryConstants.PERSONAL_PLAN_MONTHS,
-                                RepositoryConstants.VIDEO_PERSONAL_PLAN_PRICE),
-                        new PremiumPlan(RepositoryConstants.PREMIUM_PLAN_MONTHS,
-                                RepositoryConstants.VIDEO_PREMIUM_PLAN_PRICE)
-                )
-        );
-
-        PodcastStream podcastStream = new PodcastStream(
-                Arrays.asList(
-                        new FreePlan(RepositoryConstants.FREE_PLAN_MONTHS,
-                                RepositoryConstants.PODCAST_FREE_PLAN_PRICE),
-                        new PersonalPlan(RepositoryConstants.PERSONAL_PLAN_MONTHS,
-                                RepositoryConstants.PODCAST_PERSONAL_PLAN_PRICE),
-                        new PremiumPlan(RepositoryConstants.PREMIUM_PLAN_MONTHS,
-                                RepositoryConstants.PODCAST_PREMIUM_PLAN_PRICE)
-                )
-        );
-
+        MusicStream musicStream = new MusicStream();
+        VideoStream videoStream = new VideoStream();
+        PodcastStream podcastStream = new PodcastStream();
         streams = Arrays.asList(musicStream, videoStream, podcastStream);
     }
 

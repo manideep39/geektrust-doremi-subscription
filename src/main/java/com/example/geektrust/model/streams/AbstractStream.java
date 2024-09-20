@@ -8,8 +8,8 @@ public abstract class AbstractStream {
     protected List<AbstractPlan> plans;
     protected String name;
 
-    protected AbstractStream(List<AbstractPlan> plans) {
-        this.plans = plans;
+    protected AbstractStream() {
+        this.plans = createPlans();
     }
 
     public List<AbstractPlan> getPlans() {
@@ -23,4 +23,6 @@ public abstract class AbstractStream {
     public String getName() {
         return name;
     }
+
+    protected abstract List<AbstractPlan> createPlans();
 }
