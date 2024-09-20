@@ -1,9 +1,6 @@
 package com.example.geektrust.repository;
 
 import com.example.geektrust.model.plans.AbstractPlan;
-import com.example.geektrust.model.plans.FreePlan;
-import com.example.geektrust.model.plans.PersonalPlan;
-import com.example.geektrust.model.plans.PremiumPlan;
 import com.example.geektrust.model.streams.AbstractStream;
 import com.example.geektrust.model.streams.MusicStream;
 import com.example.geektrust.model.streams.PodcastStream;
