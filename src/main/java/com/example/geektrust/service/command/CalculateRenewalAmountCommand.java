@@ -1,5 +1,6 @@
 package com.example.geektrust.service.command;
 
+import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.service.PrintRenewalDetails;
 import com.example.geektrust.service.RenewalService;
 
@@ -9,7 +10,7 @@ public class CalculateRenewalAmountCommand implements Command {
         try {
             int renewalAmount = RenewalService.getInstance().getAmount();
             PrintRenewalDetails.getInstance().save("RENEWAL_AMOUNT " + renewalAmount);
-        } catch (Exception e) {
+        } catch (SubscriptionException e) {
             PrintRenewalDetails.getInstance().save(e.getMessage());
         }
     }

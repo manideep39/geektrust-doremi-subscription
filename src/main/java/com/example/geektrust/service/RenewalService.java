@@ -1,5 +1,6 @@
 package com.example.geektrust.service;
 
+import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.model.Subscription;
 import com.example.geektrust.model.topups.AbstractTopUp;
 import com.example.geektrust.repository.SubscriptionRepository;
@@ -44,9 +45,9 @@ public class RenewalService {
         return amount;
     }
 
-    public int getAmount() throws Exception {
+    public int getAmount() throws SubscriptionException {
         if (subRepo.getSubscriptions().isEmpty())
-            throw new Exception("SUBSCRIPTIONS_NOT_FOUND");
+            throw new SubscriptionException("SUBSCRIPTIONS_NOT_FOUND");
         return streamAmount() + topUpAmount();
     }
 }

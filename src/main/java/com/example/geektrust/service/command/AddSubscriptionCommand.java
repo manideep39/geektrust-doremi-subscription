@@ -1,5 +1,6 @@
 package com.example.geektrust.service.command;
 
+import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.model.Subscription;
 import com.example.geektrust.service.PrintRenewalDetails;
 import com.example.geektrust.service.RenewalService;
@@ -19,7 +20,7 @@ public class AddSubscriptionCommand implements Command {
             Subscription sub = SubscriptionService.getInstance().saveSubscription(streamType, planType);
             String renewalDate = RenewalService.getInstance().getReminderDate(sub);
             PrintRenewalDetails.getInstance().save("ADD_SUBSCRIPTION " + streamType + " " + renewalDate + "\n");
-        } catch (Exception e) {
+        } catch (SubscriptionException e) {
             PrintRenewalDetails.getInstance().save(e.getMessage() + "\n");
         }
     }

@@ -1,5 +1,8 @@
 package com.example.geektrust.service;
 
+import com.example.geektrust.exception.SubscriptionException;
+import com.example.geektrust.exception.TopUpException;
+import com.example.geektrust.exception.StartDateException;
 import com.example.geektrust.model.Subscription;
 import com.example.geektrust.model.plans.AbstractPlan;
 import com.example.geektrust.model.streams.AbstractStream;
@@ -30,14 +33,14 @@ public class SubscriptionService {
         return instance;
     }
 
-    public void saveSubscriptionStartDate(String dateString) throws Exception {
+    public void saveSubscriptionStartDate(String dateString) throws StartDateException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         try {
             LocalDate date = LocalDate.parse(dateString, formatter);
             subscriptionRepository.setStartDate(date);
         } catch (DateTimeException e) {
-            throw new Exception("INVALID_DATE");
+            throw new StartDateException("INVALID_DATE");
         }
     }
 
@@ -49,14 +52,14 @@ public class SubscriptionService {
         return false;
     }
 
-    public Subscription saveSubscription(String streamType, String planType) throws Exception {
+    public Subscription saveSubscription(String streamType, String planType) throws SubscriptionException {
         if (subscriptionRepository.getStartDate() == null)
-            throw new Exception("ADD_SUBSCRIPTION_FAILED INVALID_DATE");
+            throw new SubscriptionException("ADD_SUBSCRIPTION_FAILED INVALID_DATE");
 
         AbstractStream stream = streamRepository.getStream(streamType);
 
         if (isDuplicateStream(stream))
-            throw new Exception("ADD_SUBSCRIPTION_FAILED DUPLICATE_CATEGORY");
+            throw new SubscriptionException("ADD_SUBSCRIPTION_FAILED DUPLICATE_CATEGORY");
 
         AbstractPlan plan = streamRepository.getPlan(stream, planType);
         LocalDate startDate = subscriptionRepository.getStartDate();
@@ -66,12 +69,12 @@ public class SubscriptionService {
         return sub;
     }
 
-    public void saveTopUp(String topUpType, int topUpMonths) throws Exception {
+    public void saveTopUp(String topUpType, int topUpMonths) throws TopUpException {
         if (subscriptionRepository.getSubscriptions().isEmpty())
-            throw new Exception("ADD_TOPUP_FAILED SUBSCRIPTIONS_NOT_FOUND");
+            throw new TopUpException("ADD_TOPUP_FAILED SUBSCRIPTIONS_NOT_FOUND");
 
         if (subscriptionRepository.getTopUp() != null)
-            throw new Exception("ADD_TOPUP_FAILED DUPLICATE_TOPUP");
+            throw new TopUpException("ADD_TOPUP_FAILED DUPLICATE_TOPUP");
 
         AbstractTopUp topUp = topUpRepository.getToUp(topUpType);
         subscriptionRepository.setTopUp(topUp);
