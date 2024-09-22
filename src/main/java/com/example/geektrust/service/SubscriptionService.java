@@ -1,6 +1,6 @@
 package com.example.geektrust.service;
 
-import com.example.geektrust.constant.ErrorMessage;
+import com.example.geektrust.constant.ErrorMessageConstant;
 import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.exception.TopUpException;
 import com.example.geektrust.exception.StartDateException;
@@ -41,7 +41,7 @@ public class SubscriptionService {
             LocalDate date = LocalDate.parse(dateString, formatter);
             subscriptionRepository.setStartDate(date);
         } catch (DateTimeException e) {
-            throw new StartDateException(ErrorMessage.INVALID_DATE);
+            throw new StartDateException(ErrorMessageConstant.INVALID_DATE);
         }
     }
 
@@ -55,12 +55,12 @@ public class SubscriptionService {
 
     public Subscription saveSubscription(String streamType, String planType) throws SubscriptionException {
         if (subscriptionRepository.getStartDate() == null)
-            throw new SubscriptionException(ErrorMessage.ADD_SUBSCRIPTION_FAILED_INVALID_DATE);
+            throw new SubscriptionException(ErrorMessageConstant.ADD_SUBSCRIPTION_FAILED_INVALID_DATE);
 
         AbstractStream stream = streamRepository.getStream(streamType);
 
         if (isDuplicateStream(stream))
-            throw new SubscriptionException(ErrorMessage.ADD_SUBSCRIPTION_FAILED_DUPLICATE_CATEGORY);
+            throw new SubscriptionException(ErrorMessageConstant.ADD_SUBSCRIPTION_FAILED_DUPLICATE_CATEGORY);
 
         AbstractPlan plan = streamRepository.getPlan(stream, planType);
         LocalDate startDate = subscriptionRepository.getStartDate();
@@ -72,10 +72,10 @@ public class SubscriptionService {
 
     public void saveTopUp(String topUpType, int topUpMonths) throws TopUpException {
         if (subscriptionRepository.getSubscriptions().isEmpty())
-            throw new TopUpException(ErrorMessage.ADD_TOPUP_FAILED_SUBSCRIPTIONS_NOT_FOUND);
+            throw new TopUpException(ErrorMessageConstant.ADD_TOPUP_FAILED_SUBSCRIPTIONS_NOT_FOUND);
 
         if (subscriptionRepository.getTopUp() != null)
-            throw new TopUpException(ErrorMessage.ADD_TOPUP_FAILED_DUPLICATE_TOPUP);
+            throw new TopUpException(ErrorMessageConstant.ADD_TOPUP_FAILED_DUPLICATE_TOPUP);
 
         AbstractTopUp topUp = topUpRepository.getToUp(topUpType);
         subscriptionRepository.setTopUp(topUp);

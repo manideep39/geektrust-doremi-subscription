@@ -1,10 +1,11 @@
 package com.example.geektrust.service;
 
-import com.example.geektrust.constant.ErrorMessage;
+import com.example.geektrust.constant.ErrorMessageConstant;
 import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.model.Subscription;
 import com.example.geektrust.model.topups.AbstractTopUp;
 import com.example.geektrust.repository.SubscriptionRepository;
+import com.example.geektrust.constant.StreamPlanConstant;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +27,7 @@ public class RenewalService {
     public String getReminderDate(Subscription sub) {
         int planMonths = sub.getPlan().getMonths();
         LocalDate reminderDate = sub.getStartDate().plusMonths(planMonths)
-                .minusDays(ServiceConstants.DAYS_BEFORE_PLAN_EXPIRY);
+                .minusDays(StreamPlanConstant.DAYS_BEFORE_PLAN_EXPIRY);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return reminderDate.format(formatter);
     }
@@ -48,7 +49,7 @@ public class RenewalService {
 
     public int getAmount() throws SubscriptionException {
         if (subRepo.getSubscriptions().isEmpty())
-            throw new SubscriptionException(ErrorMessage.SUBSCRIPTIONS_NOT_FOUND);
+            throw new SubscriptionException(ErrorMessageConstant.SUBSCRIPTIONS_NOT_FOUND);
         return streamAmount() + topUpAmount();
     }
 }

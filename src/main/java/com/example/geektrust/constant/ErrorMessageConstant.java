@@ -1,6 +1,6 @@
 package com.example.geektrust.constant;
 
-public class ErrorMessage {
+public final class ErrorMessageConstant {
     public static final String INVALID_DATE = "INVALID_DATE";
     public static final String ADD_SUBSCRIPTION_FAILED_INVALID_DATE = "ADD_SUBSCRIPTION_FAILED INVALID_DATE";
     public static final String ADD_SUBSCRIPTION_FAILED_DUPLICATE_CATEGORY = "ADD_SUBSCRIPTION_FAILED DUPLICATE_CATEGORY";

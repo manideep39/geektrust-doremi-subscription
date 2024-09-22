@@ -1,6 +1,6 @@
-package com.example.geektrust.repository;
+package com.example.geektrust.constant;
 
-public final class RepositoryConstants {
+public final class StreamPlanConstant {
     public static final int FREE_PLAN_MONTHS = 1;
     public static final int PERSONAL_PLAN_MONTHS = 1;
     public static final int PREMIUM_PLAN_MONTHS = 3;
@@ -20,4 +20,6 @@ public final class RepositoryConstants {
     public static final int STANDARD_TOPUP_MONTHS = 1;
     public static final int FOUR_DEVICE_TOPUP_PRICE = 50;
     public static final int TEN_DEVICE_TOPUP_PRICE = 100;
+
+    public static final int DAYS_BEFORE_PLAN_EXPIRY = 10;
 }

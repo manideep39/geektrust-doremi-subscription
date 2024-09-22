@@ -3,6 +3,7 @@ package com.example.geektrust.repository;
 import com.example.geektrust.model.topups.AbstractTopUp;
 import com.example.geektrust.model.topups.FourDeviceTopUp;
 import com.example.geektrust.model.topups.TenDeviceTopUp;
+import com.example.geektrust.constant.StreamPlanConstant;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,10 +14,10 @@ public class TopUpRepository {
 
     private TopUpRepository() {
         topUps = Arrays.asList(
-                new FourDeviceTopUp(RepositoryConstants.STANDARD_TOPUP_MONTHS,
-                        RepositoryConstants.FOUR_DEVICE_TOPUP_PRICE),
-                new TenDeviceTopUp(RepositoryConstants.STANDARD_TOPUP_MONTHS,
-                        RepositoryConstants.TEN_DEVICE_TOPUP_PRICE)
+                new FourDeviceTopUp(StreamPlanConstant.STANDARD_TOPUP_MONTHS,
+                        StreamPlanConstant.FOUR_DEVICE_TOPUP_PRICE),
+                new TenDeviceTopUp(StreamPlanConstant.STANDARD_TOPUP_MONTHS,
+                        StreamPlanConstant.TEN_DEVICE_TOPUP_PRICE)
         );
     }
 
