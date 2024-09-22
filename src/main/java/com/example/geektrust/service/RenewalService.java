@@ -3,7 +3,7 @@ package com.example.geektrust.service;
 import com.example.geektrust.constant.ErrorMessageConstant;
 import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.model.Subscription;
-import com.example.geektrust.model.topups.AbstractTopUp;
+import com.example.geektrust.model.topup.AbstractTopUp;
 import com.example.geektrust.repository.SubscriptionRepository;
 import com.example.geektrust.constant.StreamPlanConstant;
 

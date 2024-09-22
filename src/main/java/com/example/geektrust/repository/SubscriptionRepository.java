@@ -1,7 +1,7 @@
 package com.example.geektrust.repository;
 
 import com.example.geektrust.model.Subscription;
-import com.example.geektrust.model.topups.AbstractTopUp;
+import com.example.geektrust.model.topup.AbstractTopUp;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

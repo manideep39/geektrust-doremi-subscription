@@ -1,4 +1,4 @@
-package com.example.geektrust.model.plans;
+package com.example.geektrust.model.plan;
 
 public class FreePlan extends AbstractPlan {
     public FreePlan(int months, int price) {

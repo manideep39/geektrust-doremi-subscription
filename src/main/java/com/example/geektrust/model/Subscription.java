@@ -1,7 +1,7 @@
 package com.example.geektrust.model;
 
-import com.example.geektrust.model.plans.AbstractPlan;
-import com.example.geektrust.model.streams.AbstractStream;
+import com.example.geektrust.model.plan.AbstractPlan;
+import com.example.geektrust.model.stream.AbstractStream;
 
 import java.time.LocalDate;
 

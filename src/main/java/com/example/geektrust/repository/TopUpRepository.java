@@ -1,8 +1,8 @@
 package com.example.geektrust.repository;
 
-import com.example.geektrust.model.topups.AbstractTopUp;
-import com.example.geektrust.model.topups.FourDeviceTopUp;
-import com.example.geektrust.model.topups.TenDeviceTopUp;
+import com.example.geektrust.model.topup.AbstractTopUp;
+import com.example.geektrust.model.topup.FourDeviceTopUp;
+import com.example.geektrust.model.topup.TenDeviceTopUp;
 import com.example.geektrust.constant.StreamPlanConstant;
 
 import java.util.Arrays;

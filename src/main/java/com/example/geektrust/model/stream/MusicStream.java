@@ -1,9 +1,9 @@
-package com.example.geektrust.model.streams;
+package com.example.geektrust.model.stream;
 
-import com.example.geektrust.model.plans.AbstractPlan;
-import com.example.geektrust.model.plans.FreePlan;
-import com.example.geektrust.model.plans.PersonalPlan;
-import com.example.geektrust.model.plans.PremiumPlan;
+import com.example.geektrust.model.plan.AbstractPlan;
+import com.example.geektrust.model.plan.FreePlan;
+import com.example.geektrust.model.plan.PersonalPlan;
+import com.example.geektrust.model.plan.PremiumPlan;
 import com.example.geektrust.constant.StreamPlanConstant;
 
 import java.util.Arrays;

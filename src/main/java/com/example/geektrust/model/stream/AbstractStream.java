@@ -1,6 +1,6 @@
-package com.example.geektrust.model.streams;
+package com.example.geektrust.model.stream;
 
-import com.example.geektrust.model.plans.AbstractPlan;
+import com.example.geektrust.model.plan.AbstractPlan;
 
 import java.util.List;
 
@@ -14,10 +14,6 @@ public abstract class AbstractStream {
 
     public List<AbstractPlan> getPlans() {
         return plans;
-    }
-
-    public void setPlans(List<AbstractPlan> plans) {
-        this.plans = plans;
     }
 
     public String getName() {

@@ -1,4 +1,4 @@
-package com.example.geektrust.model.plans;
+package com.example.geektrust.model.plan;
 
 public abstract class AbstractPlan {
     protected int months;

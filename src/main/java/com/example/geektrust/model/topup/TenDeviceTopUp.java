@@ -1,4 +1,4 @@
-package com.example.geektrust.model.topups;
+package com.example.geektrust.model.topup;
 
 public class TenDeviceTopUp extends AbstractTopUp {
     public TenDeviceTopUp(int months, int price) {

@@ -1,10 +1,10 @@
 package com.example.geektrust.repository;
 
-import com.example.geektrust.model.plans.AbstractPlan;
-import com.example.geektrust.model.streams.AbstractStream;
-import com.example.geektrust.model.streams.MusicStream;
-import com.example.geektrust.model.streams.PodcastStream;
-import com.example.geektrust.model.streams.VideoStream;
+import com.example.geektrust.model.plan.AbstractPlan;
+import com.example.geektrust.model.stream.AbstractStream;
+import com.example.geektrust.model.stream.MusicStream;
+import com.example.geektrust.model.stream.PodcastStream;
+import com.example.geektrust.model.stream.VideoStream;
 
 import java.util.Arrays;
 import java.util.List;
