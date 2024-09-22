@@ -1,82 +1,41 @@
 package com.example.geektrust.controller;
 
-import com.example.geektrust.model.Subscription;
-import com.example.geektrust.service.RenewalService;
-import com.example.geektrust.service.SubscriptionService;
+import com.example.geektrust.service.PrintRenewalDetails;
+import com.example.geektrust.service.command.AddSubscriptionCommand;
+import com.example.geektrust.service.command.AddTopUpCommand;
+import com.example.geektrust.service.command.CalculateRenewalAmountCommand;
+import com.example.geektrust.service.command.StartSubscriptionCommand;
+import com.example.geektrust.service.invoker.CommandInvoker;
 
 
 public class SubscriptionController {
-    private final SubscriptionService subServ;
-    private final RenewalService renServ;
-    private final StringBuilder output;
+    private final CommandInvoker cmdInvoker;
 
     public SubscriptionController() {
-        subServ = SubscriptionService.getInstance();
-        renServ = RenewalService.getInstance();
-        output = new StringBuilder();
+        cmdInvoker = CommandInvoker.getInstance();
     }
 
     public void handleCommands(String[] commandArgs) {
         switch (commandArgs[0]) {
             case "START_SUBSCRIPTION":
                 String dateString = commandArgs[1];
-                startSubscription(dateString);
+                cmdInvoker.queueCommand(new StartSubscriptionCommand(dateString));
                 break;
             case "ADD_SUBSCRIPTION":
                 String serviceType = commandArgs[1];
                 String planType = commandArgs[2];
-                addSubscription(serviceType, planType);
+                cmdInvoker.queueCommand(new AddSubscriptionCommand(serviceType, planType));
                 break;
             case "ADD_TOPUP":
                 String toUpType = commandArgs[1];
-                int months = commandArgs.length == 2 ? 1 : Integer.parseInt(commandArgs[2]);
-                addTopUp(toUpType, months);
+                int topUpMonths = commandArgs.length == 2 ? 1 : Integer.parseInt(commandArgs[2]);
+                cmdInvoker.queueCommand(new AddTopUpCommand(toUpType, topUpMonths));
                 break;
             case "PRINT_RENEWAL_DETAILS":
-                getRenewalAmount();
-                printRenewalDetails();
+                cmdInvoker.queueCommand(new CalculateRenewalAmountCommand());
+                cmdInvoker.executeCommands();
+                PrintRenewalDetails.getInstance().printOutput();
                 break;
         }
-    }
-
-    private void startSubscription(String dateString) {
-        try {
-            subServ.saveSubscriptionStartDate(dateString);
-        } catch (Exception e) {
-            output.append(e.getMessage()).append("\n");
-        }
-    }
-
-    private void addSubscription(String streamType, String planType) {
-        try {
-            Subscription sub = subServ.saveSubscription(streamType, planType);
-            String renewalDate = renServ.getReminderDate(sub);
-            output.append("ADD_SUBSCRIPTION").append(" ")
-                    .append(streamType).append(" ")
-                    .append(renewalDate).append("\n");
-        } catch (Exception e) {
-            output.append(e.getMessage()).append("\n");
-        }
-    }
-
-    private void addTopUp(String topUpType, int topUpMonths) {
-        try {
-            subServ.saveTopUp(topUpType, topUpMonths);
-        } catch (Exception e) {
-            output.append(e.getMessage()).append("\n");
-        }
-    }
-
-    private void getRenewalAmount() {
-        try {
-            int renewalAmount = renServ.getAmount();
-            output.append("RENEWAL_AMOUNT").append(" ").append(renewalAmount);
-        } catch (Exception e) {
-            output.append(e.getMessage());
-        }
-    }
-
-    private void printRenewalDetails() {
-        System.out.println(output);
     }
 }
