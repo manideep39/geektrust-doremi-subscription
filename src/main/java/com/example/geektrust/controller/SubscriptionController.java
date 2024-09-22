@@ -1,7 +1,6 @@
 package com.example.geektrust.controller;
 
 import com.example.geektrust.model.Subscription;
-import com.example.geektrust.repository.SubscriptionRepository;
 import com.example.geektrust.service.RenewalService;
 import com.example.geektrust.service.SubscriptionService;
 
@@ -12,9 +11,8 @@ public class SubscriptionController {
     private final StringBuilder output;
 
     public SubscriptionController() {
-        SubscriptionRepository subRepo = new SubscriptionRepository();
-        subServ = new SubscriptionService(subRepo);
-        renServ = new RenewalService(subRepo);
+        subServ = SubscriptionService.getInstance();
+        renServ = RenewalService.getInstance();
         output = new StringBuilder();
     }
 

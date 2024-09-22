@@ -8,13 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubscriptionRepository {
+    private static SubscriptionRepository instance;
     private LocalDate startDate;
     private final List<Subscription> subscriptions;
     private AbstractTopUp topUp;
     private int topUpMonths;
 
-    public SubscriptionRepository() {
+    private SubscriptionRepository() {
         subscriptions = new ArrayList<>();
+    }
+
+    public static SubscriptionRepository getInstance() {
+        if (instance == null)
+            instance = new SubscriptionRepository();
+        return instance;
     }
 
     public LocalDate getStartDate() {

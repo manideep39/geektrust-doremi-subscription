@@ -13,14 +13,21 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class SubscriptionService {
+    private static SubscriptionService instance;
     private final StreamRepository streamRepository;
     private final SubscriptionRepository subscriptionRepository;
     private final TopUpRepository topUpRepository;
 
-    public SubscriptionService(SubscriptionRepository subRepo) {
-        streamRepository = new StreamRepository();
-        subscriptionRepository = subRepo;
-        topUpRepository = new TopUpRepository();
+    private SubscriptionService() {
+        streamRepository = StreamRepository.getInstance();
+        subscriptionRepository = SubscriptionRepository.getInstance();
+        topUpRepository = TopUpRepository.getInstance();
+    }
+
+    public static SubscriptionService getInstance() {
+        if (instance == null)
+            instance = new SubscriptionService();
+        return instance;
     }
 
     public void saveSubscriptionStartDate(String dateString) throws Exception {

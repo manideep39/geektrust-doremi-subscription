@@ -8,10 +8,17 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class RenewalService {
+    private static RenewalService instance;
     private final SubscriptionRepository subRepo;
 
-    public RenewalService(SubscriptionRepository subRepo) {
-        this.subRepo = subRepo;
+    private RenewalService() {
+        this.subRepo = SubscriptionRepository.getInstance();
+    }
+
+    public static RenewalService getInstance() {
+        if (instance == null)
+            instance = new RenewalService();
+        return instance;
     }
 
     public String getReminderDate(Subscription sub) {

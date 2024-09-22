@@ -8,15 +8,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TopUpRepository {
+    private static TopUpRepository instance;
     private final List<AbstractTopUp> topUps;
 
-    public TopUpRepository() {
+    private TopUpRepository() {
         topUps = Arrays.asList(
                 new FourDeviceTopUp(RepositoryConstants.STANDARD_TOPUP_MONTHS,
                         RepositoryConstants.FOUR_DEVICE_TOPUP_PRICE),
                 new TenDeviceTopUp(RepositoryConstants.STANDARD_TOPUP_MONTHS,
                         RepositoryConstants.TEN_DEVICE_TOPUP_PRICE)
         );
+    }
+
+    public static TopUpRepository getInstance() {
+        if (instance == null)
+            instance = new TopUpRepository();
+        return instance;
     }
 
     public AbstractTopUp getToUp(String toUpType) {
