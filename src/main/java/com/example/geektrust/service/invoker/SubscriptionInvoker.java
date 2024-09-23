@@ -5,17 +5,17 @@ import com.example.geektrust.service.command.Command;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CommandInvoker {
-    private static CommandInvoker instance;
+public class SubscriptionInvoker {
+    private static SubscriptionInvoker instance;
     private final Queue<Command> commandQueue;
 
-    private CommandInvoker () {
+    private SubscriptionInvoker() {
         commandQueue = new LinkedList<>();
     }
 
-    public static CommandInvoker getInstance() {
+    public static SubscriptionInvoker getInstance() {
         if (instance == null)
-            instance = new CommandInvoker();
+            instance = new SubscriptionInvoker();
         return instance;
     }
 
