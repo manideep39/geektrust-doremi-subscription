@@ -18,11 +18,11 @@ public class PodcastStream extends AbstractStream {
     protected List<AbstractPlan> createPlans() {
         return Arrays.asList(
                 new FreePlan(StreamPlanConstant.FREE_PLAN_MONTHS,
-                        StreamPlanConstant.VIDEO_FREE_PLAN_PRICE),
+                        StreamPlanConstant.PODCAST_FREE_PLAN_PRICE),
                 new PersonalPlan(StreamPlanConstant.PERSONAL_PLAN_MONTHS,
-                        StreamPlanConstant.VIDEO_PERSONAL_PLAN_PRICE),
+                        StreamPlanConstant.PODCAST_PERSONAL_PLAN_PRICE),
                 new PremiumPlan(StreamPlanConstant.PREMIUM_PLAN_MONTHS,
-                        StreamPlanConstant.VIDEO_PREMIUM_PLAN_PRICE)
+                        StreamPlanConstant.PODCAST_PREMIUM_PLAN_PRICE)
         );
     }
 }
