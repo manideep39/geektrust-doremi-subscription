@@ -1,8 +1,8 @@
 package com.example.geektrust.constant;
 
 public enum TopUp {
-    FOUR_DEVICE(50),
-    TEN_DEVICE(100);
+    FOUR_DEVICE(StreamPlanConstant.FOUR_DEVICE_TOPUP_PRICE),
+    TEN_DEVICE(StreamPlanConstant.TEN_DEVICE_TOPUP_PRICE);
 
     private final int price;
 
