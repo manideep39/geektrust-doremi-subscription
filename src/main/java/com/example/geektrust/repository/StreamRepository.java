@@ -1,5 +1,6 @@
 package com.example.geektrust.repository;
 
+import com.example.geektrust.constant.StreamType;
 import com.example.geektrust.model.stream.AbstractStream;
 import com.example.geektrust.model.stream.MusicStream;
 import com.example.geektrust.model.stream.PodcastStream;
@@ -25,9 +26,9 @@ public class StreamRepository {
         return instance;
     }
 
-    public AbstractStream getStream(String streamType) {
+    public AbstractStream getStream(StreamType streamType) {
         return streams.stream()
-                .filter(stream -> stream.getName().equals(streamType))
+                .filter(stream -> stream.getStreamType().equals(streamType))
                 .findFirst().orElse(null);
     }
 }

@@ -2,6 +2,7 @@ package com.example.geektrust.service;
 
 import com.example.geektrust.constant.ErrorMessageConstant;
 import com.example.geektrust.constant.PlanType;
+import com.example.geektrust.constant.StreamType;
 import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.exception.TopUpException;
 import com.example.geektrust.exception.StartDateException;
@@ -51,7 +52,7 @@ public class SubscriptionService {
         return false;
     }
 
-    public Subscription saveSubscription(String streamType, PlanType planType) throws SubscriptionException {
+    public Subscription saveSubscription(StreamType streamType, PlanType planType) throws SubscriptionException {
         if (subscriptionRepository.getStartDate() == null)
             throw new SubscriptionException(ErrorMessageConstant.ADD_SUBSCRIPTION_FAILED_INVALID_DATE);
 

@@ -1,6 +1,7 @@
 package com.example.geektrust.model.stream;
 
 import com.example.geektrust.constant.PlanType;
+import com.example.geektrust.constant.StreamType;
 import com.example.geektrust.model.Plan;
 import com.example.geektrust.constant.StreamPlanConstant;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class PodcastStream extends AbstractStream {
     public PodcastStream() {
-        name = "PODCAST";
+        super(StreamType.PODCAST);
     }
 
     @Override
