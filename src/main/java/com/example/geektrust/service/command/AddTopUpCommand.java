@@ -18,7 +18,7 @@ public class AddTopUpCommand implements Command {
         try {
             SubscriptionService.getInstance().saveTopUp(topUp, topUpMonths);
         } catch (TopUpException e) {
-            PrintRenewalDetails.getInstance().save(e.getMessage() + "\n");
+            PrintRenewalDetails.getInstance().saveAsErrorNote(e, true);
         }
     }
 }

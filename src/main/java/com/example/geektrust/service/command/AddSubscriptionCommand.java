@@ -21,9 +21,9 @@ public class AddSubscriptionCommand implements Command {
         try {
             Subscription sub = SubscriptionService.getInstance().saveSubscription(streamType, planType);
             String renewalDate = RenewalService.getInstance().getReminderDate(sub);
-            PrintRenewalDetails.getInstance().save("ADD_SUBSCRIPTION " + streamType.name() + " " + renewalDate + "\n");
+            PrintRenewalDetails.getInstance().saveAsRenewalReminderNote(streamType, renewalDate);
         } catch (SubscriptionException e) {
-            PrintRenewalDetails.getInstance().save(e.getMessage() + "\n");
+            PrintRenewalDetails.getInstance().saveAsErrorNote(e, true);
         }
     }
 }

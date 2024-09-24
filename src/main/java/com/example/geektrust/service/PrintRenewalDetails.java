@@ -1,5 +1,7 @@
 package com.example.geektrust.service;
 
+import com.example.geektrust.constant.StreamType;
+
 public class PrintRenewalDetails {
     private static PrintRenewalDetails instance;
     private final StringBuilder builder;
@@ -14,8 +16,21 @@ public class PrintRenewalDetails {
         return instance;
     }
 
-    public void save(String input) {
-        builder.append(input);
+    public void saveAsRenewalReminderNote(StreamType streamType, String renewalDate) {
+        builder.append("RENEWAL_REMINDER").append(" ")
+                .append(streamType.name()).append(" ")
+                .append(renewalDate)
+                .append(System.lineSeparator());
+    }
+
+    public void saveAsErrorNote(RuntimeException e, boolean lineSeparator) {
+        builder.append(e.getMessage());
+        if (lineSeparator)
+            builder.append(System.lineSeparator());
+    }
+
+    public void saveAsRenewalAmountNote(int renewalAmount) {
+        builder.append("RENEWAL_AMOUNT").append(" ").append(renewalAmount);
     }
 
     public void printOutput() {

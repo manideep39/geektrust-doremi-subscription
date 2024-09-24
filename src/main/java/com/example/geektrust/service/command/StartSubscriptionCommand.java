@@ -16,7 +16,7 @@ public class StartSubscriptionCommand implements Command {
         try {
             SubscriptionService.getInstance().saveSubscriptionStartDate(dateString);
         } catch (StartDateException e) {
-            PrintRenewalDetails.getInstance().save(e.getMessage() + "\n");
+            PrintRenewalDetails.getInstance().saveAsErrorNote(e, true);
         }
     }
 }

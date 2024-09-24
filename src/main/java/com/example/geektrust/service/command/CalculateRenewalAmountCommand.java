@@ -9,9 +9,9 @@ public class CalculateRenewalAmountCommand implements Command {
     public void execute() {
         try {
             int renewalAmount = RenewalService.getInstance().getAmount();
-            PrintRenewalDetails.getInstance().save("RENEWAL_AMOUNT " + renewalAmount);
+            PrintRenewalDetails.getInstance().saveAsRenewalAmountNote(renewalAmount);
         } catch (SubscriptionException e) {
-            PrintRenewalDetails.getInstance().save(e.getMessage());
+            PrintRenewalDetails.getInstance().saveAsErrorNote(e, false);
         }
     }
 }
