@@ -7,6 +7,7 @@ import com.example.geektrust.service.command.CalculateRenewalAmountCommand;
 import com.example.geektrust.service.command.StartSubscriptionCommand;
 import com.example.geektrust.service.invoker.SubscriptionInvoker;
 import com.example.geektrust.constant.InputCommand;
+import com.example.geektrust.constant.TopUp;
 
 
 public class SubscriptionController {
@@ -29,9 +30,9 @@ public class SubscriptionController {
                 subInvoker.queueCommand(new AddSubscriptionCommand(serviceType, planType));
                 break;
             case ADD_TOPUP:
-                String toUpType = commandArgs[1];
+                TopUp topUp = TopUp.valueOf(commandArgs[1]);
                 int topUpMonths = commandArgs.length == 2 ? 1 : Integer.parseInt(commandArgs[2]);
-                subInvoker.queueCommand(new AddTopUpCommand(toUpType, topUpMonths));
+                subInvoker.queueCommand(new AddTopUpCommand(topUp, topUpMonths));
                 break;
             case PRINT_RENEWAL_DETAILS:
                 subInvoker.queueCommand(new CalculateRenewalAmountCommand());

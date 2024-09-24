@@ -7,10 +7,9 @@ import com.example.geektrust.exception.StartDateException;
 import com.example.geektrust.model.Subscription;
 import com.example.geektrust.model.plan.AbstractPlan;
 import com.example.geektrust.model.stream.AbstractStream;
-import com.example.geektrust.model.topup.AbstractTopUp;
+import com.example.geektrust.constant.TopUp;
 import com.example.geektrust.repository.StreamRepository;
 import com.example.geektrust.repository.SubscriptionRepository;
-import com.example.geektrust.repository.TopUpRepository;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -20,12 +19,10 @@ public class SubscriptionService {
     private static SubscriptionService instance;
     private final StreamRepository streamRepository;
     private final SubscriptionRepository subscriptionRepository;
-    private final TopUpRepository topUpRepository;
 
     private SubscriptionService() {
         streamRepository = StreamRepository.getInstance();
         subscriptionRepository = SubscriptionRepository.getInstance();
-        topUpRepository = TopUpRepository.getInstance();
     }
 
     public static SubscriptionService getInstance() {
@@ -70,14 +67,13 @@ public class SubscriptionService {
         return sub;
     }
 
-    public void saveTopUp(String topUpType, int topUpMonths) throws TopUpException {
+    public void saveTopUp(TopUp topUp, int topUpMonths) throws TopUpException {
         if (subscriptionRepository.getSubscriptions().isEmpty())
             throw new TopUpException(ErrorMessageConstant.ADD_TOPUP_FAILED_SUBSCRIPTIONS_NOT_FOUND);
 
         if (subscriptionRepository.getTopUp() != null)
             throw new TopUpException(ErrorMessageConstant.ADD_TOPUP_FAILED_DUPLICATE_TOPUP);
 
-        AbstractTopUp topUp = topUpRepository.getToUp(topUpType);
         subscriptionRepository.setTopUp(topUp);
         subscriptionRepository.setTopUpMonths(topUpMonths);
     }

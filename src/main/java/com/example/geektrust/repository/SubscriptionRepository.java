@@ -1,7 +1,7 @@
 package com.example.geektrust.repository;
 
 import com.example.geektrust.model.Subscription;
-import com.example.geektrust.model.topup.AbstractTopUp;
+import com.example.geektrust.constant.TopUp;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class SubscriptionRepository {
     private static SubscriptionRepository instance;
     private LocalDate startDate;
     private final List<Subscription> subscriptions;
-    private AbstractTopUp topUp;
+    private TopUp topUp;
     private int topUpMonths;
 
     private SubscriptionRepository() {
@@ -32,11 +32,11 @@ public class SubscriptionRepository {
         this.startDate = startDate;
     }
 
-    public AbstractTopUp getTopUp() {
+    public TopUp getTopUp() {
         return topUp;
     }
 
-    public void setTopUp(AbstractTopUp topUp) {
+    public void setTopUp(TopUp topUp) {
         this.topUp = topUp;
     }
 
