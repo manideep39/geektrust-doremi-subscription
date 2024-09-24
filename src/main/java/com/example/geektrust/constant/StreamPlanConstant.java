@@ -17,9 +17,5 @@ public final class StreamPlanConstant {
     public static final int PODCAST_PERSONAL_PLAN_PRICE = 100;
     public static final int PODCAST_PREMIUM_PLAN_PRICE = 300;
 
-    public static final int STANDARD_TOPUP_MONTHS = 1;
-    public static final int FOUR_DEVICE_TOPUP_PRICE = 50;
-    public static final int TEN_DEVICE_TOPUP_PRICE = 100;
-
     public static final int DAYS_BEFORE_PLAN_EXPIRY = 10;
 }

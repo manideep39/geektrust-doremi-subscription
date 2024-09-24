@@ -1,5 +1,6 @@
 package com.example.geektrust.service;
 
+import com.example.geektrust.constant.OutputMessageConstant;
 import com.example.geektrust.constant.StreamType;
 
 public class PrintRenewalDetails {
@@ -17,7 +18,7 @@ public class PrintRenewalDetails {
     }
 
     public void saveAsRenewalReminderNote(StreamType streamType, String renewalDate) {
-        builder.append("RENEWAL_REMINDER").append(" ")
+        builder.append(OutputMessageConstant.RENEWAL_REMINDER).append(" ")
                 .append(streamType.name()).append(" ")
                 .append(renewalDate)
                 .append(System.lineSeparator());
@@ -30,7 +31,7 @@ public class PrintRenewalDetails {
     }
 
     public void saveAsRenewalAmountNote(int renewalAmount) {
-        builder.append("RENEWAL_AMOUNT").append(" ").append(renewalAmount);
+        builder.append(OutputMessageConstant.RENEWAL_AMOUNT).append(" ").append(renewalAmount);
     }
 
     public void printOutput() {

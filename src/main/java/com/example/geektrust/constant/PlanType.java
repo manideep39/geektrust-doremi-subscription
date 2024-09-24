@@ -1,9 +1,9 @@
 package com.example.geektrust.constant;
 
 public enum PlanType {
-    FREE(1),
-    PERSONAL(1),
-    PREMIUM(3);
+    FREE(StreamPlanConstant.FREE_PLAN_MONTHS),
+    PERSONAL(StreamPlanConstant.PERSONAL_PLAN_MONTHS),
+    PREMIUM(StreamPlanConstant.PREMIUM_PLAN_MONTHS);
 
     private final int months;
 
