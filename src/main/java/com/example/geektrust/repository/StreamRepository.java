@@ -1,6 +1,5 @@
 package com.example.geektrust.repository;
 
-import com.example.geektrust.model.plan.AbstractPlan;
 import com.example.geektrust.model.stream.AbstractStream;
 import com.example.geektrust.model.stream.MusicStream;
 import com.example.geektrust.model.stream.PodcastStream;
@@ -30,12 +29,5 @@ public class StreamRepository {
         return streams.stream()
                 .filter(stream -> stream.getName().equals(streamType))
                 .findFirst().orElse(null);
-    }
-
-    public AbstractPlan getPlan(AbstractStream stream, String planType) {
-        return stream.getPlans().stream()
-                .filter(plan -> plan.getName().equals(planType))
-                .findFirst()
-                .orElse(null);
     }
 }

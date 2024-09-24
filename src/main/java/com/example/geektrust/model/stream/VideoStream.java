@@ -1,9 +1,7 @@
 package com.example.geektrust.model.stream;
 
-import com.example.geektrust.model.plan.AbstractPlan;
-import com.example.geektrust.model.plan.FreePlan;
-import com.example.geektrust.model.plan.PersonalPlan;
-import com.example.geektrust.model.plan.PremiumPlan;
+import com.example.geektrust.constant.PlanType;
+import com.example.geektrust.model.Plan;
 import com.example.geektrust.constant.StreamPlanConstant;
 
 import java.util.Arrays;
@@ -15,14 +13,11 @@ public class VideoStream extends AbstractStream {
     }
 
     @Override
-    protected List<AbstractPlan> createPlans() {
+    protected List<Plan> createPlans() {
         return Arrays.asList(
-                new FreePlan(StreamPlanConstant.FREE_PLAN_MONTHS,
-                        StreamPlanConstant.VIDEO_FREE_PLAN_PRICE),
-                new PersonalPlan(StreamPlanConstant.PERSONAL_PLAN_MONTHS,
-                        StreamPlanConstant.VIDEO_PERSONAL_PLAN_PRICE),
-                new PremiumPlan(StreamPlanConstant.PREMIUM_PLAN_MONTHS,
-                        StreamPlanConstant.VIDEO_PREMIUM_PLAN_PRICE)
+                new Plan(PlanType.FREE, StreamPlanConstant.VIDEO_FREE_PLAN_PRICE),
+                new Plan(PlanType.PERSONAL, StreamPlanConstant.VIDEO_PERSONAL_PLAN_PRICE),
+                new Plan(PlanType.PREMIUM, StreamPlanConstant.VIDEO_PREMIUM_PLAN_PRICE)
         );
     }
 }

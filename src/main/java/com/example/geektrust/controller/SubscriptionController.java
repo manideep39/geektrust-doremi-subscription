@@ -1,5 +1,6 @@
 package com.example.geektrust.controller;
 
+import com.example.geektrust.constant.PlanType;
 import com.example.geektrust.service.PrintRenewalDetails;
 import com.example.geektrust.service.command.AddSubscriptionCommand;
 import com.example.geektrust.service.command.AddTopUpCommand;
@@ -26,7 +27,7 @@ public class SubscriptionController {
                 break;
             case ADD_SUBSCRIPTION:
                 String serviceType = commandArgs[1];
-                String planType = commandArgs[2];
+                PlanType planType = PlanType.valueOf(commandArgs[2]);
                 subInvoker.queueCommand(new AddSubscriptionCommand(serviceType, planType));
                 break;
             case ADD_TOPUP:

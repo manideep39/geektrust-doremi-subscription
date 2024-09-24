@@ -1,5 +1,6 @@
 package com.example.geektrust.service.command;
 
+import com.example.geektrust.constant.PlanType;
 import com.example.geektrust.exception.SubscriptionException;
 import com.example.geektrust.model.Subscription;
 import com.example.geektrust.service.PrintRenewalDetails;
@@ -8,9 +9,9 @@ import com.example.geektrust.service.SubscriptionService;
 
 public class AddSubscriptionCommand implements Command {
     private final String streamType;
-    private final String planType;
+    private final PlanType planType;
 
-    public AddSubscriptionCommand(String streamType, String planType) {
+    public AddSubscriptionCommand(String streamType, PlanType planType) {
         this.streamType = streamType;
         this.planType = planType;
     }

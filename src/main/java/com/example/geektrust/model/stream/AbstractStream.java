@@ -1,24 +1,27 @@
 package com.example.geektrust.model.stream;
 
-import com.example.geektrust.model.plan.AbstractPlan;
+import com.example.geektrust.constant.PlanType;
+import com.example.geektrust.model.Plan;
 
 import java.util.List;
 
 public abstract class AbstractStream {
-    protected List<AbstractPlan> plans;
+    protected List<Plan> plans;
     protected String name;
 
     protected AbstractStream() {
         this.plans = createPlans();
     }
 
-    public List<AbstractPlan> getPlans() {
-        return plans;
-    }
-
     public String getName() {
         return name;
     }
 
-    protected abstract List<AbstractPlan> createPlans();
+    public Plan getPlan(PlanType planType) {
+        return plans.stream()
+                .filter(plan -> plan.getPlanType().equals(planType))
+                .findFirst().orElse(null);
+    }
+
+    protected abstract List<Plan> createPlans();
 }
